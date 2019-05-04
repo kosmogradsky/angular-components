@@ -1,0 +1,13 @@
+:host {
+  justify-self: flex-end;
+}
+
+.background {
+  background-color: #EBEBEB;
+  height: 10px;
+}
+
+.foreground {
+  height: 100%;
+  background-color: var(--light-green);
+}

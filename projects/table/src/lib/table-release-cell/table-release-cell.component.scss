@@ -1,0 +1,19 @@
+:host {
+  @media print {
+    display: none;
+  }
+}
+
+.app-table-icon {
+  text-decoration: none;
+  color: var(--light-green);
+}
+
+.release-cell-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.hovered-icon {
+  background: rgba(221, 225, 232, 0.5);
+}

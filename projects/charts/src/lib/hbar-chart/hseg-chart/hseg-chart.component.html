@@ -1,0 +1,82 @@
+<div class="container" *ngIf="data.items.length">
+  <div
+    class="chart"
+    [style.width.px]="style.width"
+    [style.height.px]="style.height"
+  >
+    <cdk-virtual-scroll-viewport
+      itemSize="51"
+      class="tooltip-container chart-scroll"
+      (mouseleave)="setHighlightedItem(null)"
+      (mousemove)="setTooltipPosition($event)"
+      #scrollContainer
+    >
+      <div
+        class="bar"
+        *cdkVirtualFor="let item of data.items; index as itemIndex"
+        [style.opacity]="isObscuredItem(itemIndex) ? style.obscuredOpacity : 1"
+        (mouseenter)="setHighlightedItem(itemIndex, $event)"
+      >
+        <div class="bar-label chart-datum-text">{{item.name}}</div>
+        <app-hseg-chart-segment
+          *ngFor="let groupId of item.values | keys"
+          [width]="scale(item.values[groupId].value)"
+          [fill]="data.groups[groupId].color"
+          [value]="item.values[groupId].value"
+          [inaccurate]="item.values[groupId].inaccurate"
+          [focused]="highlightedGroupId === groupId"
+          [obscured]="isObscuredGroup(groupId)"
+        ></app-hseg-chart-segment>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <ng-template riftContent>
+    <app-chart-tooltip
+      *ngIf="highlightedItemIndex !== null"
+      [leftTitle]="statisticTitle"
+      [rightTitle]="data.items[highlightedItemIndex].name"
+      style="min-width: 300px;"
+      [style.position]="'absolute'"
+      style.transform="translate({{tooltipPosition[0] - 20}}px, {{tooltipPosition[2] ? '-100%' : 0}})"
+      style.top="{{tooltipPosition[2] ? tooltipPosition[1] - 10 : tooltipPosition[1] + 10}}px"
+    >
+      <app-chart-legend-item
+        *ngFor="let groupId of data.items[highlightedItemIndex].values | keys"
+        labelWidth="140px"
+        [value]="data.items[highlightedItemIndex].values[groupId].inaccurate ? '**' : data.items[highlightedItemIndex].values[groupId].value"
+        [label]="data.groups[groupId].name"
+        [color]="data.groups[groupId].color"
+        [valuePrecision]="0"
+      ></app-chart-legend-item>
+    </app-chart-tooltip>
+  </ng-template>
+
+  <div class="legend-and-minimap">
+    <div class="legend" (mouseleave)="setHighlightedGroup(null)">
+      <app-chart-legend-item
+        *ngFor="let groupId of data.groups | keys"
+        labelWidth="107px"
+        [label]="data.groups[groupId].name"
+        [color]="data.groups[groupId].color"
+        [obscured]="isObscuredGroup(groupId)"
+        (mouseenter)="setHighlightedGroup(groupId)"
+      ></app-chart-legend-item>
+    </div>
+
+    <app-hbar-chart-minimap
+      *ngIf="scrollContainer"
+      class="theme-seg"
+      [data]="minimapData"
+      [height]="style.height - style.rowPaddingTop"
+      [chartHeight]="style.height"
+      [chartRowOffsetHeight]="style.rowOffsetHeight"
+      [chartScale]="scale"
+      [scrollContainer]="scrollContainer"
+    ></app-hbar-chart-minimap>
+  </div>
+</div>
+
+<ng-container *ngIf="!data.items.length">
+  <div class="no-data-error">{{ 'noData' | i18n }}</div>
+</ng-container>

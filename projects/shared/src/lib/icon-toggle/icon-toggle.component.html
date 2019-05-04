@@ -1,0 +1,7 @@
+<label [ngClass]="{ 'app-table-icon': true, 'toggle': true, 'hovered-icon': isCellHovered }">
+  <input type="checkbox" class="input" [checked]="checked" (change)="change($event)" />
+  <span class="icons">
+    <app-icon [width]="width + 'px'" [height]="height + 'px'" [icon]="icon" class="icon">
+    </app-icon>
+  </span>
+</label>

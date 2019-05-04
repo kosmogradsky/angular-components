@@ -1,0 +1,11 @@
+.tick-line {
+  stroke: rgba(90, 107, 140, .5);
+  stroke-width: 1px;
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 330px;
+}

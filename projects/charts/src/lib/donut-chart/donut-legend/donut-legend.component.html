@@ -1,0 +1,23 @@
+<div class="legend" *ngFor="let group of groups | keys">
+  <div
+    class="legend__group"
+    *ngIf="group !== undefined"
+    [style.opacity]="opacityGroup((currentSectorIndex | async), group)"
+  >
+    {{group}}
+  </div>
+  <div
+    class="legend__info"
+    *ngFor="let item of groups[group]"
+    (mouseleave)="mouseLeave()"
+    (mouseenter)="mouseEnter($event, item)"
+    (mousemove)="setTooltipCoordinates($event)"
+    [style.opacity]="opacityItem((currentSectorIndex | async), item.index)"
+  >
+    <app-chart-legend-item
+      [color]="item.data.color"
+      label="{{item.data.title}} {{item.data.suffix}}"
+    ></app-chart-legend-item>
+  </div>
+</div>
+

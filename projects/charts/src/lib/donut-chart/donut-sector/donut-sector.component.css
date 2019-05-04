@@ -1,0 +1,13 @@
+.sector__text {
+  cursor: default;
+  text-anchor: middle;
+  line-height: 24px;
+  font-size: 13px;
+  fill: var(--dark-gray);
+  letter-spacing: var(--spacing);
+}
+
+.sector__path {
+  cursor: pointer;
+  stroke-width: 0.1px;
+}

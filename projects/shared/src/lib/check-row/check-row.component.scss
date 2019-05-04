@@ -1,0 +1,148 @@
+.check-row {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.check-wrap {
+  max-width: 100%;
+}
+
+.check-wrap.removable {
+  max-width: calc(100% - 15px);
+}
+
+.link {
+  margin-top: 3px;
+  margin-left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  color: var(--dark-gray);
+  border-radius: 50%;
+  transition: color 0.1s linear, background-color 0.1s linear;
+
+  &:hover {
+    color: var(--light-green);
+    background-color: #F6F6F6;
+  }
+}
+
+.text {
+  margin-top: 1px;
+  margin-right: 11px;
+  margin-left: 11px;
+  display: block;
+  overflow: hidden;
+  width: calc(100% - 24px);
+  font-size: 13px;
+  color: var(--light-gray);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 0.1s linear;
+}
+
+.icon {
+  visibility: visible;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.remove {
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.remove-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 11px;
+  height: 11px;
+  transform-origin: 50% 50%;
+  transform: rotate(45deg);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background-color: var(--light-gray);
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background-color: var(--light-gray);
+    transform-origin: 50% 50%;
+    transform: rotate(90deg);
+  }
+}
+
+.remove:hover .remove-inner::after,
+.remove:hover .remove-inner::before {
+  background-color: var(--light-green);
+}
+
+:host(.theme-filters)::ng-deep .text {
+  font-size: 13px;
+  color: var(--light-gray);
+}
+
+:host(.theme-filters)::ng-deep .checkbox {
+  margin-bottom: 6px;
+}
+
+:host(.theme-filters):hover::ng-deep .checkbox input + .square {
+  border-color: var(--light-green);
+}
+
+:host(.theme-filters)::ng-deep .checkbox input:checked + .square {
+  background-color: var(--light-green);
+  border-color: var(--light-green);
+}
+
+:host(.theme-filters):hover::ng-deep .checkbox input:checked + .square {
+  background-color: var(--light-green-hover);
+  border-color: var(--light-green-hover);
+}
+
+:host(.theme-filters):hover::ng-deep .checkbox input + .square + .text {
+  color: var(--light-green);
+}
+
+:host(.theme-filters)::ng-deep .checkbox input:checked + .square + .text {
+  color: var(--light-green);
+}
+
+:host(.theme-filters):hover::ng-deep .checkbox input:checked + .square + .text {
+  color: var(--light-green-hover);
+}
+
+:host::ng-deep .checkbox input:checked + .square + .text + .link {
+  color: var(--dark-green);
+}
+
+:host::ng-deep .checkbox .text {
+  margin-right: 0;
+}

@@ -1,0 +1,18 @@
+<div class="input__dates">
+  <app-date-input class="date-input" [(date)]="startDateString" (dateChange)="validateAndEmit()"></app-date-input>
+  <div class="rectangle"></div>
+  <app-date-input class="date-input" [(date)]="endDateString" (dateChange)="validateAndEmit()"></app-date-input>
+</div>
+
+<button
+  type="button"
+  class="calendar-button"
+  (click)="showCalendar.emit()"
+>
+  <app-icon
+    class="calendar-icon"
+    width="12"
+    height="12"
+    icon="calendar"
+  ></app-icon>
+</button>

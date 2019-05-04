@@ -1,0 +1,28 @@
+:host(.trigger_with-arrow) {
+  position: relative;
+  padding-right: 51px;
+}
+
+:host(.trigger_menu-visible) {
+  color: var(--dark-green);
+}
+
+:host(.trigger_menu-visible) .arrow {
+  transform: rotate(180deg);
+}
+
+.arrow-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 1px solid var(--outline);
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  transition: transform 0.1s linear;
+}

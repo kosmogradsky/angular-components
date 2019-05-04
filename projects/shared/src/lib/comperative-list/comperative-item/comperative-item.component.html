@@ -1,0 +1,35 @@
+<div
+  class="wrapper"
+  [class.wrapper_disabled]="disabled && item.active"
+>
+  <button
+    class="toggle"
+    type="button"
+    [tabindex]="disabled ? -1 : 0"
+    (click)="toggleChecked()"
+  >
+    <div
+      class="checkbox"
+      [class.checkbox_checked]="item.active"
+    >
+      <app-icon
+        class="icon"
+        [class.icon_hidden]="!item.active"
+        icon="accept"
+        width="12px"
+        height="10px"
+      ></app-icon>
+    </div>
+    <span class="label">
+      <ng-content></ng-content>
+    </span>
+  </button>
+  <button
+    class="delete"
+    type="button"
+    [disabled]="disabled && item.active"
+    [tabindex]="disabled ? -1 : 0"
+    title="Удалить"
+    (click)="handleDelete()"
+  >Удалить</button>
+</div>

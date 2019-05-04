@@ -1,0 +1,20 @@
+<div class="range" #range>
+  <div
+    class="selected-range"
+    [style.transform]="selectedRangeTransform | safeStyle"
+  ></div>
+  <div
+    class="handle"
+    #firstHandle
+    style.transform="translate({{firstHandlePosition}}px)"
+  ></div>
+  <div
+    class="handle"
+    #secondHandle
+    style.transform="translate({{secondHandlePosition}}px)"
+  ></div>
+</div>
+<div class="labels">
+  <span>{{minLabel}}</span>
+  <span>{{maxLabel}}</span>
+</div>

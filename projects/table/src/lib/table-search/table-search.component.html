@@ -1,0 +1,13 @@
+<app-icon
+  class="input-icon"
+  icon="search"
+  [height]="14"
+  [width]="14"
+></app-icon>
+<input
+  class="input"
+  type="text"
+  [placeholder]="placeholder"
+  [value]="table.filters[field] ? table.filters[field].request : ''"
+  (input)="filter($event.target.value)"
+>

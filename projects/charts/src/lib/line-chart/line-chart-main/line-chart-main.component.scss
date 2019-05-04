@@ -1,0 +1,33 @@
+:host {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+.tick-line {
+  stroke: rgba(163, 172, 197, .5);
+  stroke-width: 1px;
+
+  &:nth-of-type(2),
+  &:last-of-type {
+    opacity: 1 !important;
+  }
+}
+
+.tick-label {
+  fill: #a3acc5;
+  font-size: 12px;
+  letter-spacing: var(--spacing);
+}
+
+.x-tick-label {
+  text-anchor: middle;
+}
+
+.mousemove-capture {
+  visibility: hidden;
+}
+
+.graphic {
+  pointer-events: all;
+}

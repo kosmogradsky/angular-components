@@ -1,0 +1,20 @@
+<svg:g *ngIf="rectProperties | async as props">
+  <svg:text
+    *ngIf="focused | async"
+    class="app-typo-chart bar-value"
+    text-anchor="middle"
+    [attr.x]="props.x + props.width/2"
+    [attr.y]="props.y - 5"
+  >
+    {{value}}
+  </svg:text>
+
+  <svg:rect
+    [attr.x]="props.x"
+    [attr.y]="props.y"
+    [attr.width]="props.width"
+    [attr.height]="props.height"
+    [attr.opacity]="opacity | async"
+    [attr.fill]="props.fill">
+  </svg:rect>
+</svg:g>

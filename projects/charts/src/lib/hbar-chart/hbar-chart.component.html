@@ -1,0 +1,48 @@
+<ng-container *ngIf="data.length">
+  <div class="chart" [style.width.px]="width" [style.height.px]="height">
+    <cdk-virtual-scroll-viewport
+      itemSize="33"
+      class="tooltip-container chart-scroll"
+      #scrollContainer
+    >
+      <div
+        class="chart-row"
+        *cdkVirtualFor="let datum of data"
+        [style.padding-top.px]="style.rowPaddingTop"
+        [style.padding-bottom.px]="style.rowPaddingBottom"
+        [style.height.px]="style.barHeight"
+      >
+        <div class="bar-label app-chart-text">{{datum.name}}</div>
+        <div class="app-chart-text chart-datum-value">{{datum.inaccurate ? '**' : (datum.value | separateDigits: digitsCount)}}</div>
+        <div
+          class="chart-bar"
+          [style.background-color]="datum.id === focusedId ? style.focusedColor : color"
+          [style.width.px]="scale(datum.value)"
+        ></div>
+        <div
+          class="chart-bar-background"
+          [style.backgroundColor]="barsHaveBackgrounds ? '#EBEBEB' : 'transparent'"
+          [style.width.px]="style.barMaxWidth - scale(datum.value)"
+        ></div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+
+  <app-hbar-chart-minimap
+    *ngIf="scrollContainer"
+    [data]="data"
+    [height]="height"
+    [chartHeight]="height"
+    [chartRowOffsetHeight]="style.rowOffsetHeight"
+    [chartScale]="scale"
+    [scrollContainer]="scrollContainer"
+    [focusedIndex]="focusedIndex"
+    [color]="color"
+    [focusedColor]="style.focusedColor"
+  ></app-hbar-chart-minimap>
+</ng-container>
+
+<ng-container *ngIf="!data.length">
+  <div class="no-data-error">{{ 'noData' | i18n }}</div>
+</ng-container>

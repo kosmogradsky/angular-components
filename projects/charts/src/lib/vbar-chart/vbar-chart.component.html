@@ -1,0 +1,41 @@
+<ng-container *ngIf="data.length">
+  <div class="container">
+    <div class="charts">
+      <div class="chart" *ngFor="let group of groups | keys; let i = index">
+        <app-vbar-chart-main
+          [hasLegend]="i === 0"
+          [data]="groups[group]"
+          [groupName]="group"
+          [height]="height"
+          (tooltipPosition)="tooltipPosition = $event"
+          (tooltipValues)="tooltipValues = $event"
+        ></app-vbar-chart-main>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!data.length">
+  <div class="no-data-error">{{ 'noData' | i18n }}</div>
+</ng-container>
+
+
+<ng-template riftContent>
+  <app-chart-tooltip
+    *ngIf="tooltipPosition"
+    [style.position]="'absolute'"
+    style.transform="translate({{tooltipPosition.left - 20}}px, {{tooltipPosition.reverse ? '-100%' : 0}})"
+    style.top="{{tooltipPosition.reverse ? tooltipPosition.top - 20 : tooltipPosition.top + 20}}px"
+    [leftTitle]="activeGroup | async"
+    [rightTitle]="activeSubgroup | async"
+  >
+    <app-chart-legend-item
+      *ngFor="let item of tooltipValues"
+      [label]="item.key"
+      [color]="item.color"
+      [value]="chartService.format(item.value)"
+      [inaccurate]="item.inaccurate"
+      labelWidth="135px"
+    ></app-chart-legend-item>
+  </app-chart-tooltip>
+</ng-template>

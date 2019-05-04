@@ -1,0 +1,48 @@
+:host {
+  display: inline-block;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  padding-left: 19px;
+  padding-right: 19px;
+  color: #5A6B8C;
+  min-width: 270px;
+  border: 1px solid #DDE1E8;
+  box-shadow: 0px 5px 8px rgba(118, 135, 255, 0.1);
+  border-radius: 2px;
+  background-color: #fff;
+  pointer-events: none;
+}
+
+.titles {
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+  padding-bottom: 12px;
+}
+
+.left-title {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: var(--spacing);
+}
+
+.right-title {
+  font-size: 12px;
+  margin-left: auto;
+  padding-left: 10px;
+  letter-spacing: var(--spacing);
+}
+
+:host::ng-deep .content .color {
+  margin-right: 17px;
+}
+
+:host::ng-deep .content .text {
+  line-height: 21px;
+  font-size: 12px;
+}
+
+:host::ng-deep .content .value {
+  line-height: 21px;
+  font-size: 12px;
+}

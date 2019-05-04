@@ -1,0 +1,26 @@
+<div
+  class="search"
+  [class.thin]="thin"
+>
+  <div
+    class="loading-progress"
+    [style.opacity]="isLoading ? 0.1 : 0"
+  ></div>
+  <label>
+    <input
+      #input
+      class="search__input"
+      type="search"
+      [disabled]="disabled"
+      [placeholder]="placeholder"
+      [ngModel]="value"
+      (ngModelChange)="valueChange.emit($event)"
+      (keyup.enter)="enterValue($event)"
+    />
+    <div *ngIf="!hasClearButton || value.length === 0" class="search__icon" (click)="runSearch()">
+      <app-icon icon="search"></app-icon>
+    </div>
+
+    <div *ngIf="hasClearButton && value.length > 0" class="remove__icon" (click)="valueChange.emit('')"></div>
+  </label>
+</div>

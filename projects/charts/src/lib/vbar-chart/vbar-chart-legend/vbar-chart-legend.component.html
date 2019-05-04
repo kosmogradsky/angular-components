@@ -1,0 +1,10 @@
+<app-chart-legend-item
+  *ngFor="let item of data"
+  [label]="item.key"
+  labelWidth="183px"
+  [color]="item.color"
+  (mouseleave)="mouseLeave()"
+  (mouseenter)="mouseEnter(item.key, item.color)"
+  [style.opacity]="opacityItem((currentKey | async), item.key)"
+>
+</app-chart-legend-item>

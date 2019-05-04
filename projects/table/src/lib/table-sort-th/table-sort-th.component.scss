@@ -1,0 +1,101 @@
+.sort-button {
+  user-select: none;
+  position: relative;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 7px;
+  padding-top: 6px;
+  border-radius: 4px;
+  right: -12px;
+  outline: none;
+  letter-spacing: var(--spacing);
+  line-height: 17px;
+
+  &:hover {
+    background-color: rgba(221, 225, 232 , 0.5);
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.sort-icon {
+  display: inline-flex;
+  align-items: flex-end;
+  margin-right: 3px;
+  width: 8px;
+  height: 11px;
+}
+
+.sort-icon ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sort-icon_desc {
+  transform: rotate(180deg) scale(-1, 1);
+}
+
+.sort-button_active {
+  color: var(--dark-green);
+}
+
+:host(.app-table-sort-th_grouped) {
+  .sort-button {
+    right: 0;
+    font-size: 14px;
+    padding: 5px 15px 7px;
+
+    &_active {
+      height: 30px;
+      position: relative;
+      top: -2px;
+      border: none;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+
+  &:first-child .sort-button {
+    right: 2px;
+
+    &_active {
+      border: none;
+    }
+  }
+
+  &:last-child .sort-button {
+    left: 2px;
+
+    &_active {
+      border: none;
+    }
+  }
+
+  .sort-icon {
+    width: 8px;
+    height: 11px;
+    margin-right: 5px;
+  }
+
+  .sort-button:hover {
+    color: var(--light-green);
+    background-color: transparent;
+  }
+
+  .sort-button_active {
+    background-color: var(--light-green);
+    box-shadow: 0px 2px 5px rgba(31, 183, 164, 0.2);
+    color: white;
+  }
+
+  .sort-button_active:hover {
+    background-color: var(--light-green-hover);
+    color: #ffffff;
+  }
+}

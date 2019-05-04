@@ -1,0 +1,23 @@
+.date {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  letter-spacing: 0.002em;
+  width: 72px;
+  color: var(--dark-gray);
+}
+
+.date:focus {
+  outline: none;
+}
+
+.date:hover {
+  color: var(--light-green);
+  cursor: pointer;
+}
+
+.date::-webkit-outer-spin-button,
+.date::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

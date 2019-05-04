@@ -1,0 +1,5 @@
+<a [href]="link" class="release-cell-wrapper" (mouseenter)="cellHovered(true)" (mouseleave)="cellHovered(false)">
+  <div [ngClass]="{ 'app-table-icon': true, 'hovered-icon': isCellHovered }">
+    <app-icon icon="air" [width]="18" [height]="13"></app-icon>
+  </div>
+</a>

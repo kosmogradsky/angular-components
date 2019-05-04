@@ -1,0 +1,47 @@
+:host {
+  justify-self: center;
+}
+
+.background {
+  background-color: #EBEBEB;
+  height: 2px;
+  align-self: center;
+  position: relative;
+  top: 4px;
+
+  &_reversed {
+    background-color: #EBEBEB;
+    height: 2px;
+    position: relative;
+    top: 4px;
+    transform: rotate(180deg);
+  }
+}
+
+.foreground {
+  position: relative;
+  align-self: center;
+  top: -4px;
+  left: -1px;
+  height: 10px;
+  background-color: var(--light-green);
+
+  &_reversed {
+    position: relative;
+    top: -4px;
+    background-color: #777776;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+}
+
+.right-bar {
+  border-left: 1px solid #A3ACC5;
+  height: 24px;
+}
+
+.left-bar,
+.right-bar {
+  display: inline-block;
+  height: 24px;
+  padding: 7px 0;
+}

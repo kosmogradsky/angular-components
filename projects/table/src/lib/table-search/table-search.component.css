@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  align-items: center;
+  color: var(--light-gray);
+  padding-left: 30px;
+}
+
+.input {
+  padding-left: 22px;
+  font-size: 12px;
+  letter-spacing: var(--spacing);
+  outline: none;
+  width: 100%;
+  max-width: 144px;
+}
+
+.input::placeholder {
+  color: var(--light-gray);
+}
+
+.input-icon {
+  position: absolute;
+  pointer-events: none;
+}

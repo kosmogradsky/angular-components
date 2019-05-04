@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.legend {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  margin-top: 12px;
+  width: 210px;
+}

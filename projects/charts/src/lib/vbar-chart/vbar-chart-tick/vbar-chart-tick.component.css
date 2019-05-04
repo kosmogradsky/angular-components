@@ -1,0 +1,11 @@
+.tick__text {
+  fill: #A3ACC5;
+  font-size: 12px;
+  letter-spacing: var(--spacing);
+}
+
+.tick__line {
+  stroke: var(--light-gray);
+  opacity: 0.2;
+  letter-spacing: var(--spacing);
+}

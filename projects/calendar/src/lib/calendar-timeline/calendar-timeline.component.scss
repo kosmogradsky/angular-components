@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  position: relative;
+  height: 42px;
+  margin-bottom: 36px;
+}
+
+.background {
+  border-radius: 4px;
+}
+
+.selectedRange {
+  fill: var(--light-green);
+}
+
+.tick {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  padding-bottom: 11px;
+  font-size: 12px;
+  color: var(--dark-gray);
+  transform: translateX(-50%);
+}
+
+.tick::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: var(--dark-gray);
+}
+
+.cursor {
+  position: absolute;
+  z-index: 3;
+  top: -2px;
+  height: calc(100% + 4px);
+  border: 2px solid var(--dark-gray);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    top: -4px;
+    height: calc(100% + 8px);
+    border-width: 4px;
+  }
+}

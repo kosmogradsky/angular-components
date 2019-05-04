@@ -1,0 +1,7 @@
+<input
+  class="date"
+  type="text"
+  [textMask]="textMask"
+  [ngModel]="date"
+  (ngModelChange)="dateChange.emit($event)"
+>

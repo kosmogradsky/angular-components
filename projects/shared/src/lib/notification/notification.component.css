@@ -1,0 +1,37 @@
+:host {
+  position: relative;
+  display: block;
+  background-color: #777776;
+  border-radius: 4px;
+  bottom: 33px;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+.content {
+  color: #FFFFFF;
+  line-height: 34px;
+  font-size: 17px;
+  letter-spacing: var(--spacing);
+}
+
+.cancel {
+  margin-left: 44px;
+  padding: 0;
+  text-decoration: underline;
+  font-size: 17px;
+  outline: none;
+  letter-spacing: var(--spacing);
+}
+
+.cancel-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+}

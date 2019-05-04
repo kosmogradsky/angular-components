@@ -1,0 +1,12 @@
+<svg:line
+  *ngFor="let index of (line.points.length - 1) | times"
+  class="chart-line"
+  [attr.x1]="xScale(line.points[index].date)"
+  [attr.x2]="xScale(line.points[index + 1].date)"
+  [attr.y1]="yScale(line.points[index].value)"
+  [attr.y2]="yScale(line.points[index + 1].value)"
+  [attr.stroke]="line.color"
+  [attr.stroke-width.px]="weight"
+  [attr.stroke-dasharray]="line.points[index + 1].inaccurate ? '5 5' : 'none'"
+  [attr.opacity]="obscured ? 0.1 : 1"
+/>

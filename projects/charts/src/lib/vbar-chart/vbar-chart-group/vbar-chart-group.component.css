@@ -1,0 +1,7 @@
+:host {
+  cursor: pointer;
+}
+
+.rect {
+  fill: currentColor;
+}

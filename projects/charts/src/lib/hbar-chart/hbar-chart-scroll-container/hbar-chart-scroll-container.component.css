@@ -1,0 +1,16 @@
+.chart {
+  overflow: hidden;
+}
+
+.chart-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  box-sizing: content-box;
+  padding-right: 25px;
+}
+
+.chart-scroll::ng-deep svg {
+  display: block;
+}

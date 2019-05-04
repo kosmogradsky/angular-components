@@ -1,0 +1,10 @@
+<p class="no-data__text" *ngIf="!spaceContent">{{ 'tableNoData' | i18n }}</p>
+<p class="no-data__text" *ngIf="spaceContent">{{ spaceContent }}</p>
+<button
+  (click)="resetFilter.emit()"
+  class="button app-button no-data__button"
+  type="button"
+  *ngIf="!spaceContent"
+>
+  {{ 'tableResetFilter' | i18n }}
+</button>

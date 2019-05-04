@@ -1,0 +1,46 @@
+<div class="check-row">
+  <div
+    class="check-wrap"
+    [class.removable]="removable"
+  >
+    <app-checkbox
+      [label]="label"
+      [checked]="checked"
+      [disabled]="disabled"
+      (change)="check.emit($event)"
+      (checkboxClickPoint)="checkboxClickPoint.emit($event)"
+    >
+      <ng-content></ng-content>
+      <a
+        *ngIf="href"
+        class="link"
+        [href]="href"
+        target="_blank"
+        rel="nofollow noopener"
+        (mousemove)="showTooltip($event)"
+        (mouseleave)="closeTooltip()"
+      >
+        <app-icon
+          class="link-arrow"
+          icon="arrow"
+          width="7px"
+          height="7px"
+        ></app-icon>
+      </a>
+    </app-checkbox>
+  </div>
+
+  <button class="remove" *ngIf="removable" (click)="remove.emit()">
+    <span class="remove-inner"></span>
+  </button>
+</div>
+
+<ng-template riftContent>
+  <app-tooltip
+    *ngIf="tooltipAlwaysVisible || (popupText && isShowTooltip)"
+    style.transform="translate({{leftTooltip + tooltipMarginX}}px, {{topTooltip + tooltipMarginY}}px)"
+    [style.min-width.px]="popupMinWidth"
+  >
+    {{ popupText }}
+  </app-tooltip>
+</ng-template>

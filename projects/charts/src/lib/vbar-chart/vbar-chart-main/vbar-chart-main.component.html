@@ -1,0 +1,61 @@
+<div
+  class="container"
+  [ngStyle]="{'padding-bottom': height ? chartHeight : margin.height }"
+>
+  <div
+    class="app-typo-small group"
+    *ngIf="groupName && chartService.yTicks"
+    [ngStyle]="{'padding-left': margin.left + chartService.rectXPosition + 'px'}"
+  >
+    <span class="group__name">{{groupName}}</span>
+    <span class="group__value" [ngStyle]="{'color': activeColor | async }">{{(groupValue | async)}}</span>
+  </div>
+
+
+  <div class="container__chart">
+    <div class="chart" #chart>
+      <svg>
+        <g *ngIf="chartService.yTicks"
+           attr.transform="translate({{margin.left}}, {{margin.top}})"
+        >
+
+          <g class="y-axis">
+            <svg:g
+              *ngFor="let tick of chartService.yTicks; let i = index"
+              appVbarChartTick
+              [isShowText]="i % 2 === 0 && i !== chartService.yTicks.length - 1"
+              [isAxisY]="true"
+              [attr.transform]="chartService.getTickTransformY(tick)"
+              [value]="chartService.format(tick)">
+            </svg:g>
+          </g>
+
+          <g class="x-axis">
+            <svg:g
+              *ngFor="let group of data"
+              appVbarChartTick
+              [attr.transform]="chartService.getTickTransformX(group.key)"
+              [value]="group.key">
+            </svg:g>
+          </g>
+
+          <g
+            (mousemove)="changePosition($event)"
+            (mouseleave)="exitTooltipMode()"
+          >
+            <svg:g
+              appVbarChartGroup
+              *ngFor="let group of data; let i = index"
+              (mouseenter)="tooltipValues.emit(group.values)"
+              [attr.transform]="chartService.getRectTransformX(group.key)"
+              [color]="chartService.getActiveColor(i, group.group, group.key)"
+              [data]="group">
+            </svg:g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <app-vbar-chart-legend *ngIf="hasLegend" class="legend" [data]="data[0].values"></app-vbar-chart-legend>
+  </div>
+</div>

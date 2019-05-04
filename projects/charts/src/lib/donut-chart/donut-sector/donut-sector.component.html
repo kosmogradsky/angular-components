@@ -1,0 +1,13 @@
+<svg:path class="sector__path"
+      [attr.fill]="datum.data.color"
+      [attr.stroke]="datum.data.color"
+      [attr.d]="d | async">
+</svg:path>
+<svg:text
+  class="sector__text"
+  dy="0.80em"
+  dx="0.45em"
+  [attr.transform]="textTransform">
+  {{text}}
+</svg:text>
+

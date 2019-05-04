@@ -1,0 +1,55 @@
+<svg
+  class="background"
+  [attr.height]="style.height"
+  [attr.width]="style.width"
+  #background
+>
+  <defs>
+    <mask id="calendarCursorMask{{uniqueId}}">
+      <rect
+        [attr.height]="style.height"
+        [attr.width]="style.width"
+        fill="white"
+      />
+      <rect
+        fill="black"
+        [attr.height]="style.height"
+        [attr.x]="cursorTranslate"
+        [attr.width]="cursorWidth"
+      />
+    </mask>
+  </defs>
+  <rect
+    [attr.height]="style.height"
+    [attr.width]="style.width"
+    fill="rgba(221, 225, 232, 0.3)"
+  />
+  <rect
+    class="selectedRange"
+    [attr.height]="style.height"
+    [attr.width]="getTransform(selectedRange).width"
+    [attr.x]="getTransform(selectedRange).x"
+  />
+  <rect
+    [attr.mask]="'#calendarCursorMask' + uniqueId | svgBase"
+    [attr.height]="style.height"
+    [attr.width]="getTransform(selectedRange).width"
+    [attr.x]="getTransform(selectedRange).x"
+    fill="rgba(255, 255, 255, 0.7)"
+  />
+</svg>
+
+<div
+  class="tick"
+  *ngFor="let tick of yearTicks"
+  [style.left.px]="scale(tick)"
+>
+  {{ tick | formatDate:'y' }}
+</div>
+
+<div
+  #cursor
+  class="cursor"
+  style.transform="translate({{cursorTranslate}}px)"
+  [style.width.px]="cursorWidth"
+></div>

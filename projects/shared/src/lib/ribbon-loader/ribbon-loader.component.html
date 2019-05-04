@@ -1,0 +1,6 @@
+<div *ngIf="!progress" class="loader"></div>
+<div
+  *ngIf="progress"
+  class="progress"
+  [style.width.%]="progress * 100"
+></div>

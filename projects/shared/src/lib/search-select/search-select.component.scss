@@ -1,0 +1,68 @@
+:host {
+  display: block;
+}
+
+.list {
+  margin: 0;
+  padding: 14px 0;
+  list-style: none;
+  max-height: 200px;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: var(--spacing);
+  border: 1px solid var(--outline);
+  border-radius: 4px;
+  background-color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s linear;
+}
+
+.list_visible {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.item {
+  width: 100%;
+  padding-left: 26px;
+  padding-right: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition-property: color, opacity;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+
+  &_not-object {
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--dark-green);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 9px;
+  }
+
+  &_no-data {
+    pointer-events: none;
+
+    &:hover {
+      cursor: default;
+      color: inherit;
+    }
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+

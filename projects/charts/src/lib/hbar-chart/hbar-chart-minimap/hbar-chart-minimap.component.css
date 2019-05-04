@@ -1,0 +1,33 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+:host svg {
+  transform-origin: 0 0;
+}
+
+:host(.theme-seg) .minimap-bar {
+  margin-top: 7px;
+  fill: #5A6B8C;
+}
+
+.minimap-cursor {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  border-color: rgba(31, 183, 164, 0.2);
+  border-style: solid;
+  border-radius: 2px;
+  min-height: 20px;
+  box-shadow: 0px 5px 8px rgba(118, 135, 255, 0.1),
+    inset 0px 0px 0px 5px white;
+}
+
+.minimap-cursor:hover {
+  border-color: rgba(31, 183, 164, 0.5);
+}
+
+.minimap-cursor-background {
+  fill: rgba(255, 255, 255, 0.85);
+}

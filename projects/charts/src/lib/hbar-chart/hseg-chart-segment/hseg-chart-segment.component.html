@@ -1,0 +1,12 @@
+<div
+  class="value-wrapper"
+  [class.value-wrapper_always-visible]="focused && !obscured"
+  [class.value-wrapper_obscured]="obscured"
+>
+  <div class="value">{{ inaccurate ? '**' : (value | separateDigits)}}</div>
+</div>
+<div
+  class="segment"
+  [style.opacity]="obscured ? 0.1 : 1"
+  [style.background-color]="fill"
+></div>

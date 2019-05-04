@@ -1,0 +1,145 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: var(--spacing);
+  background-color: #fff;
+  box-shadow: 0px 5px 8px rgba(118, 135, 255, 0.1);
+  border: 1px solid var(--outline-dark);
+  border-radius: 4px;
+  color: inherit;
+  user-select: none;
+  transition: color 0.1s linear;
+
+  &_disabled {
+    color: var(--light-gray);
+    pointer-events: none;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px 10px 20px;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  transition: color 0.1s linear;
+  outline: none;
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--light-green)
+  }
+
+  &:hover .checkbox {
+    border-color: var(--light-green);
+
+    &_checked {
+      background-color: var(--light-green);
+    }
+  }
+}
+
+.checkbox {
+  position: relative;
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--dark-gray);
+  border-radius: 2px;
+  transition-property: border-color, background-color, color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+
+  &_checked {
+    background-color: var(--dark-gray);
+    color: #fff;
+  }
+
+  .wrapper_disabled & {
+    border-color: var(--light-gray);
+
+    &_checked {
+      background-color: var(--light-gray);
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.1s linear;
+
+  &_hidden {
+    transform: scale(0);
+  }
+}
+
+.label {
+  display: block;
+  max-width: 161px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete {
+  position: relative;
+  padding: 0;
+  line-height: 40px;
+  font-size: 0;
+  width: 38px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      background-color: var(--light-green);
+    }
+  }
+
+  /* icon */
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    background-color: var(--dark-gray);
+    transition: background-color 0.1s linear;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::before {
+    width: 14px;
+    height: 1px;
+  }
+
+  &::after {
+    height: 14px;
+    width: 1px;
+  }
+
+  .wrapper_disabled &:before,
+  .wrapper_disabled &::after {
+    background-color: var(--light-gray);
+  }
+}

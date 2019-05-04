@@ -1,0 +1,7 @@
+<ul class="block" *ngFor="let item of items">
+  <li class="item"  *ngFor="let currentItem of item" (click)="itemClick($event, currentItem)">
+    <button type="button" class="button">
+      <span class="button-inner">{{ currentItem.title | i18n }}</span>
+    </button>
+  </li>
+</ul>

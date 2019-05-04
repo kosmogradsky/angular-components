@@ -1,0 +1,15 @@
+<ul class="list">
+  <li
+    *ngFor="let item of items"
+    class="item"
+  >
+    <app-comperative-item
+      [item]="item"
+      [disabled]="activeItems.length < 2"
+      (changeActive)="changeActive($event)"
+      (deleteItem)="handleDelete($event)"
+    >
+      {{item.name}}
+    </app-comperative-item>
+  </li>
+</ul>

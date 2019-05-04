@@ -1,0 +1,87 @@
+:host {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.checkbox {
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  border: 1px solid #BDC3D2;
+  border-radius: 2px;
+  transition: background-color 0.1s linear, border-color 0.1s linear;
+}
+
+.text {
+  margin-top: 1px;
+  margin-right: 11px;
+  margin-left: 11px;
+  display: block;
+  overflow: hidden;
+  width: calc(100% - 24px);
+  max-width: 230px;
+  font-size: 14px;
+  color: var(--dark-gray);
+  letter-spacing: var(--spacing);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 0.1s linear;
+}
+
+.icon {
+  visibility: visible;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  left: -500px;
+  opacity: 0;
+}
+
+.input:checked + .square .icon {
+  visibility: visible;
+  opacity: 1;
+}
+
+:host:hover .input + .square {
+  border-color: var(--light-green);
+}
+
+.input:checked + .square {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+}
+
+:host:hover .input:checked + .square {
+  background-color: var(--light-green);
+  border-color: var(--light-green);
+}
+
+:host:hover .input + .square + .text {
+  color: var(--light-green);
+}
+
+.input:checked + .square + .text {
+  color: var(--dark-green);
+}
+
+:host:hover .input:checked + .square + .text {
+  color: var(--light-green);
+}

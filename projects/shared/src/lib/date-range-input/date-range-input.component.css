@@ -1,0 +1,59 @@
+:host {
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+:host(.app-date-range-input_error) .input__dates,
+:host(.app-date-range-input_error) .calendar-button {
+  border-color: #AA000A;
+}
+
+.input__dates {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  padding: 3px 0;
+  border: 1px solid rgba(221, 225, 232, 0.5);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #FFFFFF;
+}
+
+.rectangle {
+  width: 10px;
+  height: 1px;
+  background: var(--dark-gray);
+}
+
+.date-input:first-child::ng-deep .date {
+  margin-right: 5px;
+}
+
+.date-input:last-child::ng-deep .date {
+  margin-left: 5px;
+  text-align: right;
+}
+
+.calendar-button {
+  border: 1px solid rgba(221, 225, 232, 0.5);
+  border-left: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #FFFFFF;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-icon {
+  color: var(--dark-green);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.calendar-button:hover .calendar-icon {
+  background-color: rgb(245,245,245);
+}

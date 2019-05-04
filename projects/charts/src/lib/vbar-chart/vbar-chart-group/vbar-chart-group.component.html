@@ -1,0 +1,14 @@
+<svg:rect
+  class="rect"
+  [attr.width]="chartService.rectWidth"
+  [attr.x]="chartService.rectXPosition"
+  [attr.height]="chartService.chartHeight"
+  [attr.color]="color"
+  [attr.opacity]="0.4">
+</svg:rect>
+
+<svg:g
+  *ngFor="let barData of data.values"
+  appVbarChartBar
+  [data]="barData">
+</svg:g>

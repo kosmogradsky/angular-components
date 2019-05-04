@@ -1,0 +1,13 @@
+<div
+  class="legend"
+  (mouseleave)="highlightedIndexChange.emit(null)"
+>
+  <app-chart-legend-item
+    *ngFor="let line of data; index as i"
+    (mouseover)="highlightedIndexChange.emit(i)"
+    [title]="line.name"
+    [label]="line.name"
+    [color]="line.color"
+    [style.opacity]="highlightedIndex !== null && highlightedIndex !== i ? .1 : 1"
+  ></app-chart-legend-item>
+</div>

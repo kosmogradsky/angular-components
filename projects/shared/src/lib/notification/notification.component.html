@@ -1,0 +1,11 @@
+<div class="content">
+  <ng-content></ng-content>
+  <button
+    *ngIf="hasCancel"
+    (click)="abort.emit($event)"
+    type="button"
+    class="cancel"
+  >
+    <span class="cancel-inner">Отмена</span>
+  </button>
+</div>

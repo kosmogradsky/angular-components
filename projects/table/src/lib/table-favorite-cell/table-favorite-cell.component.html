@@ -1,0 +1,13 @@
+<div
+  class="favorite-cell-wrapper"
+  (mouseenter)="cellHovered(true)"
+  (mouseleave)="cellHovered(false)"
+  (click)="click($event)"
+>
+  <app-icon-toggle
+    class="icon-toggle"
+    icon="star"
+    [checked]="checked"
+    [isCellHovered]="isCellHovered"
+  ></app-icon-toggle>
+</div>

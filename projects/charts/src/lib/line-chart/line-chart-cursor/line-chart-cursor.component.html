@@ -1,0 +1,35 @@
+<svg:line
+  class="tick-line"
+  [attr.y2]="style.height"
+  [attr.x1]="translate"
+  [attr.x2]="translate"
+/>
+
+<svg:circle
+  *ngFor="let point of points"
+  [attr.cx]="monthScale(point.date)"
+  [attr.cy]="valueScale(point.value)"
+  [attr.fill]="point.inaccurate ? 'white' : point.color"
+  [attr.stroke]="point.color"
+  r="4"
+/>
+
+<ng-template #tooltip>
+  <app-chart-tooltip
+    *ngIf="visibility === 'visible' && points.length || tooltipAlwaysVisible"
+    class="tooltip"
+    style.transform="translate({{tooltipTranslate}}px, 35px)"
+    [leftTitle]="statisticTitle"
+    [rightTitle]="getDateFormated(date)"
+  >
+    <app-chart-legend-item
+      *ngFor="let point of points"
+      [label]="point.name"
+      [color]="point.color"
+      [value]="point.value"
+      [valuePrecision]="0"
+      [inaccurate]="point.inaccurate"
+      labelWidth="165px"
+    ></app-chart-legend-item>
+  </app-chart-tooltip>
+</ng-template>

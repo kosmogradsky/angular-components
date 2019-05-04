@@ -1,0 +1,49 @@
+<svg
+  *ngIf="visible"
+  [attr.height]="height"
+  [attr.width]="style.width"
+>
+  <defs>
+    <mask id="cursorMask{{uniqueId}}">
+      <rect
+        [attr.height]="height || 0"
+        [attr.width]="style.width"
+        fill="white"
+      />
+      <rect
+        *ngIf="isOverflowing"
+        fill="black"
+        [attr.y]="cursorTop"
+        [attr.x]="style.cursorOffsetLeft + style.cursorStrokeWidth"
+        [attr.height]="maskHeight || 0"
+        [attr.width]="style.cursorWidth - style.cursorStrokeWidth * 2"
+      />
+    </mask>
+  </defs>
+  <g attr.transform="translate({{style.cursorOffsetLeft + style.barPaddingLeft}}, 0)">
+    <rect
+      *ngFor="let datum of data; index as i"
+      [attr.height]="barHeight || 0"
+      [attr.y]="barOffsetHeight * i"
+      [attr.width]="getScale(datum.value) || 0"
+      [attr.fill]="i === focusedIndex ? focusedColor : color"
+    />
+  </g>
+  <rect
+    *ngIf="isOverflowing"
+    [attr.mask]="'#cursorMask' + uniqueId | svgBase"
+    [attr.height]="height || 0"
+    [attr.width]="style.width"
+    class="minimap-cursor-background"
+  />
+</svg>
+
+<div
+  class="minimap-cursor"
+  *ngIf="isOverflowing"
+  style.transform="translateY({{cursorTop - style.paddingTop - style.cursorStrokeWidth}}px)"
+  [style.height.px]="cursorHeight"
+  [style.width.px]="style.cursorWidth"
+  [style.left.px]="style.cursorOffsetLeft"
+  [style.border-width.px]="style.cursorStrokeWidth"
+></div>

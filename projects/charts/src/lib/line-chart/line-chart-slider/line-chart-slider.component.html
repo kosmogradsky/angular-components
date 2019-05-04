@@ -1,0 +1,60 @@
+<svg
+  class="mini-chart"
+  [attr.width]="style.width"
+  [attr.height]="style.sliderHeight"
+>
+  <g
+    *ngFor="let line of data; index as i"
+    [appLineChartLine]="line"
+    [index]="i"
+    [xScale]="monthScale"
+    [yScale]="valueScale"
+    [obscured]="highlightedIndex !== null && highlightedIndex !== i"
+  ></g>
+
+  <ng-container
+    [ngTemplateOutlet]="leftHandle.trail"
+  ></ng-container>
+
+  <ng-container
+    [ngTemplateOutlet]="rightHandle.trail"
+  ></ng-container>
+
+  <rect
+    [attr.height]="style.sliderHeight"
+    [attr.width]="style.width"
+    fill="none"
+    stroke="#DADEF0"
+    rx="4" ry="4"
+  />
+</svg>
+
+<div class="ticks">
+  <div
+    class="tick"
+    *ngFor="let tick of ticks"
+    [style.left.px]="monthScale(tick)"
+  >{{tick | formatDate:'y'}}</div>
+</div>
+
+<app-line-chart-slider-handle
+  [container]="host.nativeElement"
+  [allowedRange]="leftAllowedRange"
+  [monthScale]="monthScale"
+  [initialPosition]="monthScale.range()[0]"
+  [timeFunc]="timeFunc"
+  [position]="selectedRange[0]"
+  (positionChange)="setSelectedRangeBoundary(0, $event)"
+  #leftHandle
+></app-line-chart-slider-handle>
+
+<app-line-chart-slider-handle
+  [container]="host.nativeElement"
+  [allowedRange]="rightAllowedRange"
+  [monthScale]="monthScale"
+  [initialPosition]="monthScale.range()[1]"
+  [timeFunc]="timeFunc"
+  [position]="selectedRange[1]"
+  (positionChange)="setSelectedRangeBoundary(1, $event)"
+  #rightHandle
+></app-line-chart-slider-handle>

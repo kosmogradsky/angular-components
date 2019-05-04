@@ -1,0 +1,16 @@
+<svg:line
+  *ngIf="isAxisY"
+  class="tick__line"
+  [attr.x1]="-1"
+  [attr.x2]="chartService.horizontalLineX2Position"
+  [attr.stroke-width]="chartService.strokeWidth">
+</svg:line>
+
+<svg:text
+  *ngIf="isShowText"
+  class="tick__text"
+  dy="0.12em"
+  [attr.x]="isAxisY ? chartService.verticalTextXPosition : 0"
+  [attr.text-anchor]="isAxisY ? 'end' : 'middle'">
+  {{value}}
+</svg:text>

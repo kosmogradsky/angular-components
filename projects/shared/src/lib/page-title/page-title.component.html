@@ -1,0 +1,27 @@
+<div class="page-title" #wrapper>
+  <span class="page-title-text" *ngIf="!isRenaming">{{value}}</span>
+  <input
+    type="text"
+    [(ngModel)]="value"
+    maxlength="70"
+    class="page-title-input"
+    [class.page-title-input_show]="isRenaming"
+    (keyup.enter)="cancelRename()"
+    #inputElement
+  />
+  <button
+    *ngIf="editable"
+    type="button"
+    class="edit-button"
+    [class.edit-button_show]="!isRenaming"
+    (click)="rename()"
+  >
+    <app-icon
+      class="edit-icon"
+      icon="edit"
+      width="17px"
+      height="17px"
+    >
+    </app-icon>
+  </button>
+</div>

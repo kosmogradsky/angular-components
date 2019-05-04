@@ -1,0 +1,5 @@
+<div class="label">
+  <div class="color" [style.background-color]="color"></div>
+  <div class="text" [style.max-width]="labelWidth">{{label}}</div>
+</div>
+<div class="value" *ngIf="value">{{formattedValue}}</div>

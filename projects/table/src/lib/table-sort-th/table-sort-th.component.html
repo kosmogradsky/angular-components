@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="sort-button"
+  [attr.disabled]="hasNoData || null"
+  [class.sort-button_active]="table.sort.field === field"
+  (click)="sort()"
+>
+  <app-icon
+    *ngIf="table.sort.field === field"
+    class="sort-icon"
+    [class.sort-icon_desc]="table.sort.order === 'desc'"
+    icon="sort"
+  ></app-icon>
+  <span class="sort-text"><ng-content></ng-content></span>
+</button>
+

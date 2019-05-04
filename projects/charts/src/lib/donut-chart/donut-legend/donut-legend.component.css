@@ -1,0 +1,27 @@
+.legend {
+  margin-bottom: 30px;
+}
+
+.legend::ng-deep .color {
+  margin-right: 10px;
+  width: 7px;
+  height: 7px;
+}
+
+.legend:last-child {
+  margin-bottom: 0;
+}
+
+.legend__group {
+  margin-bottom: 5px;
+  font-weight: 700;
+  line-height: 26px;
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 0.042em;
+  text-transform: uppercase;
+}
+
+.legend__group:hover {
+  cursor: default;
+}

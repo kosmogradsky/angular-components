@@ -1,0 +1,23 @@
+<div>
+  <div
+    *ngFor="let weekdayName of weekdayNames"
+    class="weekdayName"
+  >{{ weekdayName }}</div>
+</div>
+<button
+  type="button"
+  class="button monthName"
+  (click)="monthClick.emit(monthTimestamp)"
+>{{ monthTimestamp | formatDate:'LLLL' }}</button>
+<div>
+  <div class="week" *ngFor="let week of month; trackBy: trackWeek">
+    <button
+      type="button"
+      *ngFor="let day of week; trackBy: trackDay"
+      class="button day"
+      [class.day--inRange]="day.valueOf() >= selectedRange[0] && day.valueOf() <= selectedRange[1]"
+      [class.day--rangeBorder]="day.valueOf() === selectedRange[0].valueOf() || day.valueOf() === selectedRange[1].valueOf()"
+      [attr.data-date]="day.valueOf()"
+    >{{ day | formatDate:'d' }}</button>
+  </div>
+</div>

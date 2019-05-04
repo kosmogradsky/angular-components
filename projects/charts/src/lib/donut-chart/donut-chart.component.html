@@ -1,0 +1,44 @@
+<ng-container *ngIf="data.length">
+  <div class="container">
+    <svg [attr.width]="width" [attr.height]="height">
+      <g class="donut" [attr.transform]="translate">
+        <g
+          *ngFor="let item of pieData"
+          appDonutSector
+          [datum]="item"
+          [radius]="radius"
+          [weight]="weight"
+          [focusWeight]="focusWeight"
+          [minPercent]="minPercent"
+          [chartWidth]="width"
+        ></g>
+      </g>
+    </svg>
+
+    <app-donut-legend
+      class="donut__legend"
+      [pieData]="pieData"
+      [groupField]="groupField"
+    ></app-donut-legend>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!data.length">
+  <div class="no-data-error">{{ 'noData' | i18n }}</div>
+</ng-container>
+
+<ng-template riftContent>
+  <app-chart-tooltip
+    class="donut__tooltip"
+    *ngIf="tooltip | async as tooltip"
+    [style.transform]="tooltip.transform | safeStyle"
+  >
+    <app-chart-legend-item
+      label="{{tooltip.data.group}}&nbsp;&nbsp;{{tooltip.data.title}}"
+      [color]="tooltip.data.color"
+      [value]="tooltip.data.formatValue"
+      [inaccurate]="tooltip.data.inaccurate"
+    ></app-chart-legend-item>
+  </app-chart-tooltip>
+</ng-template>
+

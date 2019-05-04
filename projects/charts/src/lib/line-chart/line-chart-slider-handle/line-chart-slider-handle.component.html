@@ -1,0 +1,15 @@
+<div
+  class="drag-handle"
+  style.transform="translateX({{translate}}px)"
+  #draggable
+></div>
+
+<ng-template #trail>
+  <svg:rect
+    class="drag-trail"
+    height="35"
+    [attr.x]="x"
+    [attr.width]="width"
+    rx="4" ry="4"
+  />
+</ng-template>

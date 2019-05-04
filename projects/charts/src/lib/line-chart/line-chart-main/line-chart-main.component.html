@@ -1,0 +1,95 @@
+<svg
+  [attr.width]="style.width + style.margin.left + style.margin.right"
+  [attr.height]="style.height + style.margin.top + style.margin.bottom"
+>
+  <defs>
+    <clipPath id="clipLineChart">
+      <rect [attr.width]="style.width" [attr.height]="style.height" />
+    </clipPath>
+  </defs>
+  <g [attr.width]="style.width" attr.transform="translate({{style.margin.left}}, {{style.margin.top}})">
+    <line class="tick-line"
+      [attr.x2]="style.width"
+      [attr.y1]="style.height"
+      [attr.y2]="style.height"
+    />
+    <line
+      class="tick-line"
+      *ngFor="let tick of ticks;"
+      [attr.x1]="detalization === 'week' ? weekScale(tick) : monthScale(tick)"
+      [attr.x2]="detalization === 'week' ? weekScale(tick) : monthScale(tick)"
+      [attr.y2]="style.height"
+    />
+    <ng-container *ngIf="detalization === 'week'">
+      <text
+      class="x-tick-label tick-label"
+      *ngFor="let label of scaleLabels; let first = first; let last = last"
+      [attr.x]="last ? 515 : first && weekScale(label) < 30 ? 30 : weekScale(label)"
+      [attr.y]="style.height + 4"
+      dy=".71em"
+      ><tspan [attr.x]="last ? 515 : first && weekScale(label) < 30 ? 30 : weekScale(label)">{{ label | weekFirstDay }}-</tspan>
+      <tspan [attr.x]="last ? 515 : first && weekScale(label) < 30 ? 30 : weekScale(label)" dy="15">-{{ label | weekLastDay }}</tspan></text>
+    </ng-container>
+    <ng-container *ngIf="detalization === 'day'">
+      <text
+      class="x-tick-label tick-label"
+      *ngFor="let label of scaleLabels; let first = first; let last = last"
+      [attr.x]="last ? 515 : first && dayLabelsScale(label) < 30 ? 30 : dayLabelsScale(label)"
+      [attr.y]="style.height + 4"
+      dy=".71em"
+      >{{ label | formatDay }}</text>
+    </ng-container>
+    <ng-container *ngIf="detalization === 'month'">
+      <text
+      class="x-tick-label tick-label"
+      *ngFor="let label of scaleLabels; let first = first; let last = last"
+      [attr.x]="last ? 510 : first && monthScale(label) < 20 ? 20 : monthScale(label)"
+      [attr.y]="style.height + 4"
+      dy=".71em"
+      >{{ label | formatMonth }}</text>
+    </ng-container>
+    <g
+      class="graphic"
+      #chartGraphic
+    >
+      <rect class="mousemove-capture" [attr.width]="style.width" [attr.height]="style.height" />
+      <g [attr.clip-path]="'#clipLineChart' | svgBase">
+        <g
+          *ngFor="let line of multiplePointsLines"
+          [appLineChartLine]="line"
+          [index]="line.index"
+          [xScale]="detalization === 'week' ? weekScale : monthScale"
+          [yScale]="valueScale"
+          [weight]="this.highlightedIndex === null || highlightedIndex !== line.index ? 1 : 2"
+          [obscured]="highlightedIndex !== null && highlightedIndex !== line.index"
+        ></g>
+      </g>
+      <g *ngFor="let line of singlePointLines">
+        <svg:circle
+          *ngFor="let point of line.points"
+          [attr.cx]="detalization === 'week' ? weekScale(point.date) : monthScale(point.date)"
+          [attr.cy]="valueScale(point.value)"
+          [attr.fill]="point.inaccurate ? 'white' : line.color"
+          [attr.stroke]="line.color"
+          [attr.opacity]="highlightedIndex !== null && highlightedIndex !== line.index ? 0.1 : 1"
+          r="4"
+        />
+      </g>
+      <g
+        appLineChartCursor
+        [tooltipAlwaysVisible]="tooltipAlwaysVisible"
+        [statistic]="statistic"
+        [container]="chartGraphic"
+        [monthScale]="detalization === 'week' ? weekScale : monthScale"
+        [valueScale]="valueScale"
+        [detalization]="detalization"
+        [data]="data"
+        #cursor
+      ></g>
+    </g>
+  </g>
+</svg>
+
+<ng-container
+  [ngTemplateOutlet]="cursor.tooltip"
+></ng-container>

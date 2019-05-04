@@ -1,0 +1,41 @@
+.container {
+  margin-top: -33px;
+  padding-left: 56px;
+  display: flex;
+}
+
+.info__color {
+  width: 10px;
+  height: 10px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.donut__legend {
+  margin-top: 51px;
+  margin-left: 132px;
+}
+
+.donut__tooltip {
+  min-width: auto;
+  padding-top: 10px;
+}
+
+.donut__tooltip::ng-deep .color {
+  margin-right: 20px;
+}
+
+.donut__tooltip::ng-deep .value {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+@media (max-width: 1365px) {
+  .donut__legend {
+    margin-left: 90px;
+  }
+}

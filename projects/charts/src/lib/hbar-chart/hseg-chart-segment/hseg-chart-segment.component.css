@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  margin-left: 5px;
+  position: relative;
+}
+
+.value-wrapper {
+  overflow: hidden;
+  font-size: 12px;
+  height: 1.2em;
+  line-height: 1.2em;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+.value-wrapper_always-visible {
+  overflow: visible;
+  width: auto;
+}
+
+.value-wrapper_obscured {
+  width: 0;
+}
+
+.value-wrapper:not(.value-wrapper_always-visible)::before {
+  content: '\00a0';
+  display: inline-block;
+  font-size: 0;
+}
+
+.value {
+  display: inline-block;
+  white-space: nowrap;
+  letter-spacing: var(--spacing);
+  color: #5A6B8C;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.segment {
+  height: 15px;
+  width: 100%;
+}

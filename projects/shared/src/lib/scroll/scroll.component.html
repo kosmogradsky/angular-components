@@ -1,0 +1,20 @@
+<div
+  [class]="'content-wrapper content-wrapper_type_' + type"
+  [style.margin-right.px]="horizontalOffset"
+  #contentWrapper
+>
+  <ng-content></ng-content>
+</div>
+<div
+  #scrollbarTrack
+  [ngClass]="{'scroll' : !isHideScroll, 'hidden-scroll': isHideScroll }"
+  [class]="'line line_type_' + type"
+>
+  <div
+    [style.top.%]="offsetY"
+    [style.height.%]="cursorHeight"
+    class="line-inner"
+    #scrollbar
+  >
+  </div>
+</div>

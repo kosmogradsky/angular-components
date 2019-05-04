@@ -1,0 +1,50 @@
+<div class="head">
+  <div class="title">
+    Доступно: {{ availableRange[0] | formatDate:'LLLL y' | titlecase }} — {{ availableRange[1] | formatDate:'LLLL y' |
+    titlecase }}
+  </div>
+  <button
+    type="button"
+    class="close"
+    (click)="close.emit($event)"
+  >
+    <span class="close-inner"></span>
+  </button>
+</div>
+
+<app-calendar-timeline
+  #timeline
+  [availableRange]="availableRange"
+  [selectedRange]="selectedRange"
+  (offsetChange)="applyOffset($event)"
+></app-calendar-timeline>
+
+<div class="body">
+  <div class="scroll left-scroll">
+    <app-icon
+      icon="arrow-down-thin"
+      class="arrow-icon"
+      width="32px"
+      height="18px"
+    ></app-icon>
+  </div>
+
+  <div class="calendars" [ngStyle]="transform">
+    <app-calendar
+      *ngFor="let month of availableMonths; index as i"
+      class="month"
+      [monthTimestamp]="month"
+      [selectedRange]="selectedRange"
+      (monthClick)="selectWholeMonth($event)"
+    ></app-calendar>
+  </div>
+
+  <div class="scroll right-scroll">
+    <app-icon
+      icon="arrow-down-thin"
+      class="arrow-icon"
+      width="32px"
+      height="18px"
+    ></app-icon>
+  </div>
+</div>

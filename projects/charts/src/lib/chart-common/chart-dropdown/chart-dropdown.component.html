@@ -1,0 +1,28 @@
+<app-ribbon-loader [isLoading]="isLoading"></app-ribbon-loader>
+
+<div class="container" #elementRef>
+  <div class="head">
+    <button
+      type="button"
+      class="title"
+      [class.open]="isOpen"
+      (click)="toggleOpen()"
+    >
+      <app-icon
+        class="title-icon"
+        icon="chevrone"
+        width="14px"
+        height="10px"
+      >
+      </app-icon>
+      <span [title]="reportSubjectName + chartTitle">{{ subjectName }}{{ chartTitle }}</span>
+    </button>
+    <div class="buttons">
+      <ng-content select="[appChartDropdownTools]"></ng-content>
+    </div>
+  </div>
+
+  <div class="content" [class.close]="!isOpen">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 75px;
+}
+
+.no-data__text {
+  width: 485px;
+  margin-top: 0;
+  margin-bottom: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 34px;
+  font-size: 17px;
+  color: #A3ACC5;
+  letter-spacing: var(--spacing);
+}
+
+.no-data__button {
+  margin-left: auto;
+  margin-right: auto;
+}

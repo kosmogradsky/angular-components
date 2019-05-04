@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.container {
+  margin-top: 35px;
+  display: flex;
+  align-items: start;
+}
+
+.charts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart {
+  width: 100%;
+  height: 262px;
+  display: flex;
+}
+
+.chart:last-child {
+  margin-top: 25px;
+}
+
+.tooltip {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.tooltip-top {
+  transform: translateY(-100%);
+}
+
+.tooltip-value {
+  flex-shrink: 0;
+  margin-left: 10px;
+}

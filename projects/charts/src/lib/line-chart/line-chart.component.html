@@ -1,0 +1,46 @@
+<ng-container *ngIf="data.length">
+  <div
+    class="ticks"
+    [style.height.px]="style.height"
+  >
+    <div
+      class="y-tick-label tick-label"
+      *ngFor="let tick of valueScaleTicks"
+      [style.top.px]="scales.value(tick)"
+    >{{tick | cutNumber}}
+    </div>
+  </div>
+
+  <div class="main-chart-and-slider">
+    <app-line-chart-main
+      [data]="data"
+      [statistic]="statistic"
+      [monthScale]="scales.month"
+      [weekScale]="scales.week"
+      [valueScale]="scales.value"
+      [dayLabelsScale]="scales.dayLabels"
+      [detalization]="detalization"
+      [tooltipAlwaysVisible]="tooltipAlwaysVisible"
+      [highlightedIndex]="highlightedIndex"
+    ></app-line-chart-main>
+
+    <app-line-chart-legend
+      [data]="data"
+      [(highlightedIndex)]="highlightedIndex"
+    ></app-line-chart-legend>
+
+    <app-line-chart-slider
+      [data]="data"
+      [monthScale]="scales.sliderMonth"
+      [valueScale]="scales.sliderValue"
+      [timeFunc]="timeFunc"
+      [selectedDomain]="selectedDomain"
+      (selectedDomainChange)="selectedDomainChange.next($event); computeScales()"
+      [highlightedIndex]="highlightedIndex"
+    ></app-line-chart-slider>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="data && data.length === 0">
+  <div class="no-data-error">{{ 'noData' | i18n }}</div>
+</ng-container>

@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #5A6B8C;
+  line-height: 24px;
+}
+
+:host(.obscured) {
+  opacity: 0.1;
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.color {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  margin-right: 9px;
+  flex-shrink: 0;
+}
+
+.text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: var(--spacing);
+}
+
+.value {
+  flex-shrink: 0;
+  margin-left: 15px;
+  letter-spacing: var(--spacing);
+}

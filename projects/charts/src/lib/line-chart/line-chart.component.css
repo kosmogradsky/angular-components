@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  padding-top: 13px;
+}
+
+.tick-label {
+  padding-top: 4px;
+  color: var(--light-gray);
+  font-size: 12px;
+  letter-spacing: var(--spacing);
+  transform: translateY(-50%);
+  min-width: 44px;
+  width: 100%;
+  text-align: right;
+}
+
+.tick-label:not(:last-child) {
+  position: absolute;
+}
+
+.ticks {
+  position: relative;
+  text-align: right;
+  margin-right: 3px;
+  margin-top: 5px;
+}
+
+.ticks,
+.main-chart-and-slider {
+  display: inline-block;
+  vertical-align: top;
+}

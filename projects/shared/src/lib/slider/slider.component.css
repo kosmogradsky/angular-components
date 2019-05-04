@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.range {
+  height: 2px;
+  background-color: var(--outline);
+  position: relative;
+  border-radius: 1px;
+}
+
+.selected-range {
+  height: 2px;
+  width: 100%;
+  background-color: var(--light-green);
+  transform-origin: 0 0;
+}
+
+.labels {
+  position: absolute;
+  width: 100%;
+  top: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: var(--spacing);
+  color: var(--light-gray);
+  user-select: none;
+}
+
+.handle {
+  display: block;
+  position: absolute;
+  top: -8px;
+  left: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid var(--outline);
+  transition: border-color 0.1s linear;
+  box-shadow: 0px 5px 8px rgba(118, 135, 255, 0.1);
+  cursor: pointer;
+}
+
+.handle:hover {
+  border-color: var(--light-green);
+}

@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+.page-title  {
+  position: relative;
+  padding-right: 15px;
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  line-height: 56px;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: var(--spacing);
+}
+
+.page-title-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.edit-button {
+  position: absolute;
+  left: -1000px;
+  margin-top: 3px;
+  margin-left: 8px;
+  padding: 0;
+  display: inline-block;
+  outline: none;
+  color: var(--light-gray);
+
+  &:hover {
+    color: var(--dark-green);
+  }
+
+  &_show {
+    position: static;
+    opacity: 1;
+  }
+}
+
+.page-title-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  font-size: 34px;
+  font-weight: bold;
+  outline: none;
+  letter-spacing: var(--spacing);
+  background-color: transparent;
+
+  &_show {
+    position: static;
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+

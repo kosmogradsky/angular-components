@@ -1,0 +1,19 @@
+<label class="checkbox">
+  <input
+    class="input"
+    [checked]="checked"
+    [disabled]="disabled"
+    type="checkbox"
+    (change)="check($event)"
+  >
+  <span class="square">
+    <app-icon
+      class="icon"
+      icon="accept"
+      width="10px"
+      height="8px"
+    ></app-icon>
+  </span>
+  <span class="text" [title]="label" *ngIf="label">{{ label }}</span>
+  <ng-content></ng-content>
+</label>

@@ -1,0 +1,39 @@
+:host {
+  margin-top: 32px;
+  display: flex;
+  position: relative;
+
+  @media print {
+    display: none;
+  }
+}
+
+.button {
+  margin-right: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button--active {
+  background: var(--light-green);
+  color: white;
+}
+
+.button__more {
+  width: auto;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.prev-btn-icon {
+  transform: rotate(90deg);
+}
+
+.next-btn-icon {
+  transform: rotate(-90deg);
+}

@@ -1,0 +1,113 @@
+:host {
+  box-sizing: border-box;
+  padding: 35px 48px;
+  display: block;
+  font-size: 12px;
+  color: var(--dark-gray);
+  border: 1px solid var(--outline-dark);
+  box-shadow: 0 0 8px rgba(#7687FF, 0.1);
+  border-radius: 4px;
+  background-color: #fff;
+  width: 1008px;
+  overflow-x: hidden;
+}
+
+.head {
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  letter-spacing: var(--spacing);
+}
+
+.close {
+  margin-top: -1px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.close-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 14px;
+  height: 14px;
+  transform-origin: 50% 50%;
+  transform: rotate(45deg);
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background-color: var(--dark-gray);
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background-color: var(--dark-gray);
+    transform-origin: 50% 50%;
+    transform: rotate(90deg);
+  }
+}
+
+.close:hover .close-inner::after,
+.close:hover .close-inner::before {
+  background-color: var(--light-green);
+}
+
+.calendars {
+  display: flex;
+  justify-content: space-between;
+}
+
+.body {
+  position: relative;
+}
+
+.scroll {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 49px;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.scroll:hover {
+  background: var(--outline);
+}
+
+.left-scroll {
+  margin-left: -49px;
+}
+
+.left-scroll .arrow-icon {
+  transform: rotate(90deg);
+}
+
+.right-scroll {
+  margin-right: -49px;
+  right: 0;
+  top: 0;
+}
+
+.right-scroll .arrow-icon {
+  transform: rotate(270deg);
+}

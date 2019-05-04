@@ -1,0 +1,26 @@
+<ng-template riftContent>
+  <ul
+    #list
+    class="list"
+    [class.list_visible]="visible"
+    style.transform="translate({{position.left}}px, {{position.top}}px)"
+    [style.width.px]="position.width"
+  >
+    <li
+      *ngFor="let item of options"
+      class="item"
+      [class.item_not-object]="!item.active"
+      (click)="onItemSelect(item)"
+      [title]="item.name"
+    >
+      {{item.name}}
+    </li>
+
+    <li
+      class="item item_no-data"
+      *ngIf="options && options.length === 0">
+      Ничего не найдено
+    </li>
+  </ul>
+</ng-template>
+

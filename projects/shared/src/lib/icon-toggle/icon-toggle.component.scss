@@ -1,0 +1,45 @@
+.toggle {
+  position: relative;
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  left: -1500px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icons {
+  padding-left: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-green);
+}
+
+.icon::ng-deep svg {
+  color: transparent;
+  stroke-width: 0.3;
+  stroke: var(--dark-green);
+}
+
+.input:checked + .icons::ng-deep svg {
+  color: var(--dark-green);
+  stroke-width: 0;
+}
+
+.input:hover + .icons::ng-deep svg {
+  color: var(--light-green-hover);
+  stroke-width: 0;
+}
+
+.hovered-icon {
+  background: rgba(221, 225, 232, 0.5);
+}

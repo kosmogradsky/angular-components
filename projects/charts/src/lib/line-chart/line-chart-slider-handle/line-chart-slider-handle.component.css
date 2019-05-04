@@ -1,0 +1,20 @@
+.drag-handle {
+  position: absolute;
+  top: -5px;
+  left: -3px;
+  background-color: white;
+  border: 1px solid #DDE1E8;
+  border-radius: 2px;
+  height: 44px;
+  width: 6px;
+  cursor: pointer;
+}
+
+.drag-handle:hover {
+  border-color: #A3ACC5;
+}
+
+.drag-trail {
+  fill: #1FB7A4;
+  opacity: .15;
+}
